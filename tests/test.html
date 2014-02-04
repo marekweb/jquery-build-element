@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tests: jQuery build-element plugin</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-1.14.0.css">
+    <script src="https://code.jquery.com/jquery-1.9.min.js"></script>
+    <script src="https://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blanket.js/1.1.4/blanket.js"></script>
+    <script src="../build-element.js" data-cover></script>
+    <script src="test.js"></script>
+    <script>
+
+      // Test runner using QUnit.
+      (function() {
+        function runAllTests(tests) {
+          $(document).ready(function() {
+            $.each(tests, runTest);
+          });
+        }
+
+        function equalElements(a, b) {
+          equal(a.tag, b.tag, "element tag");
+          var allAttributes = $.merge(a.attributes, b.attributes);
+          $(allAttributes).each(function() {
+            equal(this.nodeValue, b.getAttribute(this.nodeName), this.nodeName);
+          });
+          equal(a.innerHTML, b.innerHTML, "element content");
+        }
+
+        function runTest(i, t) {
+          test(t[0], function() {
+            if (t[2] == null) {
+              throws(function() {
+                var r = $.build.apply(this, t[1]);
+                console.log(r);
+              }, "throws an exception");
+            } else {
+              var elem = $.build.apply(this, t[1]);
+              equalElements(elem[0], $(t[2])[0]);
+            }
+          });
+        }
+
+        runAllTests(tests);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+  </body>
+</html>

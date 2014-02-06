@@ -57,6 +57,11 @@
 		if (classes.length > 0) attrs["class"] = classes.join(' ');
 		if (id) attrs.id = id;
 		return $('<' + tag + '>').attr(attrs).append(content);
+	};
+
+	$.fn.buildAppend = function() {
+		var element = $.build.apply(this, arguments);
+		$(this).append(element);
 	}
 
 })();

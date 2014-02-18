@@ -2,6 +2,8 @@
 
 `build-element` builds elements fast.
 
+Requires jQuery 1.8+.
+
 ## Usage
 
 One function: `$.build`.
@@ -21,6 +23,12 @@ Pass in child elements or plain text to insert into the element.
 
 `$.build('h1.heading`, 'Welcome') &rarr; `<h1 class="heading">Welcome</h1>`
 `$.build('h1.heading{Welcome}')` &rarr; `<h1 class="heading">Welcome</h1>`
+
+## Features
+
+- Slim and fast.
+- Test coverage: 100%
+- Inspired by Emmet
 
 ## Tag string syntax
 

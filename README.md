@@ -15,13 +15,15 @@ Give it a tag in the style of a CSS selector.
 Pass in attributes as an extra argument.
 
 `$.build('a.link', {href: '/welcome'})` &rarr; `<a class="link" href="/welcome"></a>`
+
 `$.build('h1#title')` &rarr; `<h1 id="title"></h1>`
 
 `$.build('h1#title.heading')` &rarr; `<h1 id="title" class="heading"></h1>`
 
 Pass in child elements or plain text to insert into the element.
 
-`$.build('h1.heading`, 'Welcome') &rarr; `<h1 class="heading">Welcome</h1>`
+`$.build('h1.heading, 'Welcome')` &rarr; `<h1 class="heading">Welcome</h1>`
+
 `$.build('h1.heading{Welcome}')` &rarr; `<h1 class="heading">Welcome</h1>`
 
 ## Features
@@ -49,7 +51,7 @@ $$('p', $$('b{Welcome}'));
 ```
 &rarr;
 ```html
-&lt;p&gt;&lt;b&gt;Welcome&lt;/b&gt;&lt;/p&gt;
+<p><b>Welcome</b></p>
 ```
 
 Pass an array of elements to nest them.
@@ -62,8 +64,8 @@ $$('ul.list', [
 ```
 &rarr;
 ```html
-&lt;ul class=&quot;list&quot;&gt;
-      &lt;li class=&quot;item&quot;&gt;First Item&lt;/li&gt;
-      &lt;li class=&quot;item&quot;&gt;Second Item&lt;/li&gt;
-     &lt;/ul&gt;
+<ul class="list">
+	<li class="item">First Item</li>
+	<li class="item">Second Item</li>
+</ul>
 ```
